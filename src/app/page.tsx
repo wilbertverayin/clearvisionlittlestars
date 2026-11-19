@@ -4,16 +4,17 @@ import { Mail, Phone, Linkedin, Facebook, Twitter, Instagram, Download, FileText
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { doctor } from '@/content/doctor';
 
 export default function Home() {
     const profileImage = PlaceHolderImages.find(p => p.id === 'profile-photo');
     const heroImage = PlaceHolderImages.find(p => p.id === 'hero-image');
 
     const socialLinks = [
-        { icon: Linkedin, href: "#" },
-        { icon: Facebook, href: "#" },
-        { icon: Twitter, href: "#" },
-        { icon: Instagram, href: "#" },
+        { icon: Linkedin, href: doctor.socialLinks.linkedin },
+        { icon: Facebook, href: doctor.socialLinks.facebook },
+        { icon: Twitter, href: doctor.socialLinks.twitter },
+        { icon: Instagram, href: doctor.socialLinks.instagram },
     ];
 
     return (
@@ -57,8 +58,8 @@ export default function Home() {
                                     priority
                                 />
                             )}
-                            <h1 className="font-headline text-4xl md:text-5xl font-bold">Jessica Emil B. Compuesto, MD</h1>
-                            <p className="text-lg md:text-xl text-white/90 mt-1">Physician | Geologist</p>
+                            <h1 className="font-headline text-4xl md:text-5xl font-bold">{doctor.name}</h1>
+                            <p className="text-lg md:text-xl text-white/90 mt-1">{doctor.headline}</p>
                              <Button variant="outline" className="mt-4 bg-white/20 text-white hover:bg-white/30 border-white/50 group">
                                 <FileText className="mr-2 h-4 w-4" /> CV
                             </Button>
@@ -72,7 +73,7 @@ export default function Home() {
                             <section id="about">
                                 <h2 className="font-headline text-3xl text-primary mb-4">About</h2>
                                 <p className="text-base leading-relaxed">
-                                    Licensed physician with prior residency training in Ophthalmology, experienced in managing high-volume outpatient, emergency, and surgical cases with accurate and structured clinical documentation. Skilled in both hospital and community healthcare, including municipal health leadership.
+                                    {doctor.about}
                                 </p>
                             </section>
                         </div>
@@ -83,10 +84,10 @@ export default function Home() {
                                 <h2 className="font-headline text-3xl text-primary mb-4">Get in touch</h2>
                                 <div className="space-y-4">
                                     <Button asChild variant="outline" className="w-full justify-start text-left">
-                                        <Link href="mailto:jessica.compuesto@email.com"><Mail className="mr-3" /> Email</Link>
+                                        <Link href={`mailto:${doctor.contact.email}`}><Mail className="mr-3" /> Email</Link>
                                     </Button>
                                     <Button asChild variant="outline" className="w-full justify-start text-left">
-                                        <Link href="tel:+1234567890"><Phone className="mr-3" /> Phone</Link>
+                                        <Link href={`tel:${doctor.contact.phone}`}><Phone className="mr-3" /> Phone</Link>
                                     </Button>
                                 </div>
                             </section>
